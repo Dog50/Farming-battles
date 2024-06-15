@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2y68jxw7hhnb"]
+
+[ext_resource type="Texture2D" uid="uid://d0rrnptivsdsl" path="res://tiles/plants free.png" id="1_u2d4h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n61x7"]
+atlas = ExtResource("1_u2d4h")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ns5x6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n61x7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0lr7"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_02wp1"]
+
+[node name="plant" type="AnimatableBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2, -3)
+sprite_frames = SubResource("SpriteFrames_ns5x6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_n0lr7")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_02wp1")
